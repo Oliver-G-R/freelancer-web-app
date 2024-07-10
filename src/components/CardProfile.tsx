@@ -14,7 +14,7 @@ export const CardProfile = (props:CardProfileProps) => {
     } = props
 
     return (
-        <Link href='#' className="flex flex-col p-6 rounded-xl shadow-lg bg-white">
+        <Link href='#' className="flex flex-col p-6 rounded-xl shadow-lg bg-white  transition hover:rotate-1">
             <div className="flex items-center">
                 <picture className="w-16 h-16 rounded-2xl overflow-hidden">
                     <img className="object-cover object-center h-full w-full" src={img} alt="Avatar" />
