@@ -1,0 +1,74 @@
+[
+    {
+      "id": "1",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "2",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "3",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "4",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "5",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "6",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "7",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "8",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    },
+    {
+      "id": "9",
+      "img": "https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg",
+      "nombre": "Luis Angel",
+      "ciudad": "Ciudad de México",
+      "title": "Desarrollador web frontend",
+      "description": "Soy un desarrollador web frontend con 15 años de experiencia en el sector empresarial."
+    }
+]
