@@ -1,5 +1,5 @@
-export interface FreelancerCardProfile {
-    id: number
+export interface Job {
+    id: string
     img: string 
     nombre: string
     ciudad: string
