@@ -1,11 +1,12 @@
-import { FreelancerCardProfile } from "@/models/Job"
+import { Job } from "@/models/Job"
 import Link from "next/link"
 
-interface CardProfileProps extends Omit<FreelancerCardProfile, "id">{}
+interface CardProfileProps extends Job{}
 
 export const CardProfile = (props:CardProfileProps) => {
 
     const {
+        id,
         img, 
         nombre,
         ciudad,
@@ -14,7 +15,7 @@ export const CardProfile = (props:CardProfileProps) => {
     } = props
 
     return (
-        <Link href='#' className="flex flex-col p-6 rounded-xl shadow-lg bg-white  transition hover:rotate-1">
+        <Link href={`/detail/${id}`} className="flex flex-col p-6 rounded-xl shadow-lg bg-white  transition hover:rotate-1">
             <div className="flex items-center">
                 <picture className="w-16 h-16 rounded-2xl overflow-hidden">
                     <img className="object-cover object-center h-full w-full" src={img} alt="Avatar" />

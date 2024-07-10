@@ -9,7 +9,7 @@ export default function Home() {
       <HeaderNav/>
       <main className="container m-auto p-5 pt-28">
         <Search />
-        <GridCard title="Desarrolladores nevos en la plataforma" />
+        <GridCard title="Desarrolladores nuevos en la plataforma" />
       </main>
     </>
   );
