@@ -28,12 +28,12 @@ export const HeaderNav = () => {
         </Link>
         <ul className='flex items-center gap-4'>
             <li>
-              <Link className='text-white border-2 rounded-xl p-2' href="/">
+              <Link className='text-white border-2 rounded-xl p-2' href="/auth/register/type-account">
                 Registrarase
               </Link>
             </li>
             <li>
-              <Link className='text-white border-2 rounded-xl p-2' href="/">
+              <Link className='text-white border-2 rounded-xl p-2' href="/auth/login">
                 Iniciar
               </Link>
             </li>
