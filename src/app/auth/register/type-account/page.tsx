@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { HiComputerDesktop, HiUser } from "react-icons/hi2";
 export default function Register(){
@@ -8,13 +9,15 @@ export default function Register(){
       </h1>
 
       <section className="flex flex-col gap-4 mt-6">
-        <Link href="/" className="flex justify-center text-xl font-semibold text-gray-400 rounded-[5px] border-gray-300 border-[2px] bg-white p-2">
+        <Link 
+          href='/auth/register/developer'
+          className="flex justify-center text-xl font-semibold text-gray-400 rounded-[5px] border-gray-300 border-[2px] bg-white p-2">
           <div className="flex gap-4 w-[40%]">
             <HiComputerDesktop className="text-3xl" />
             <span>Desarrollador</span>
           </div>
         </Link>
-        <Link href="/" className="flex justify-center text-xl font-semibold text-gray-400 rounded-[5px] border-gray-300 border-[2px] bg-white p-2">
+        <Link href="/auth/register/user-basic" className="flex justify-center text-xl font-semibold text-gray-400 rounded-[5px] border-gray-300 border-[2px] bg-white p-2">
           <div className="flex gap-4 w-[40%]">
             <HiUser className="text-3xl" />
             <span>Cliente</span>
