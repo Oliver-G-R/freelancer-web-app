@@ -22,7 +22,7 @@ export const HeaderNav = () => {
   }, [])
   return (
     <header ref={header} className='transition fixed w-full z-[5]'>
-      <nav className='container m-auto p-5 flex items-center justify-between'>
+      <nav className='global-container m-auto py-5 flex items-center justify-between'>
         <Link href='/' className='font-semibold text-white text-2xl'>
           CodeCrafters
         </Link>
