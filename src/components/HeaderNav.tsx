@@ -19,18 +19,13 @@ export const HeaderNav = () => {
     return () => {
       window.removeEventListener('scroll', () => handleScroll())
     }
-
-
-
-
-
   }, [])
   return (
     <header ref={header} className='transition fixed w-full z-[5]'>
       <nav className='container m-auto p-5 flex items-center justify-between'>
-        <h2 className='font-semibold text-white text-2xl'>
+        <Link href='/' className='font-semibold text-white text-2xl'>
           CodeCrafters
-        </h2>
+        </Link>
         <ul className='flex items-center gap-4'>
             <li>
               <Link className='text-white border-2 rounded-xl p-2' href="/">
