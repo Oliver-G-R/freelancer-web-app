@@ -10,6 +10,7 @@ export default function Login() {
     <FormAuth
       legendTitle="Bienvenido nuevamente"
       btnTitle="Iniciar sesion"
+      type="login"
       handleSubmit={handleSubmit}
     >
       <InputForm 
