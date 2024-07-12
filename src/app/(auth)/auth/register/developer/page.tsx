@@ -2,7 +2,7 @@
 import { FormEvent } from "react";
 import { FormAuth } from "../../_components/FormAuth";
 import { InputForm } from "../../_components/InputForm";
-import { HiEnvelope, HiKey, HiUser, HiMapPin } from 'react-icons/hi2'
+import { HiEnvelope, HiKey, HiUser, HiMapPin, HiCodeBracketSquare } from 'react-icons/hi2'
 export default function Developer(){
   const handleSubmit = (e: FormEvent) => {}
   return (
@@ -37,6 +37,15 @@ export default function Developer(){
         labelTitle="Ciudad"
       >
         <HiMapPin className="text-gray-400 text-2xl" />
+      </InputForm>
+      <InputForm
+        id="specialty"
+        type="text"
+        name="specialty"
+        placeholder="Desarrolo web.."
+        labelTitle="Especialidad"
+      >
+        <HiCodeBracketSquare className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
         id="password"

@@ -137,7 +137,7 @@ export default function Detail() {
           <picture className="overflow-hidden rounded-full h-[150px] w-[150px] mb-4">
             <img className="object-cover object-center h-full w-full" src="https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg" alt="Avatar" />
           </picture>
-          <Link className="text-center font-semibold w-full rounded-md p-2 bg-[--color-secondary] text-white transition hover:opacity-95" href="/">
+          <Link className="text-center font-semibold w-full rounded-md p-2 bg-[--color-secondary] text-white transition hover:opacity-95" href="/profile/oliver">
             Ver perfil
           </Link>
 

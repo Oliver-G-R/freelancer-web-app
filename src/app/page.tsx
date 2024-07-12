@@ -1,5 +1,4 @@
 import { GridCard } from "@/components/GridCard";
-import { HeaderNav } from "@/components/HeaderNav";
 import { Search } from "@/components/Search";
 
 export default function Home() {
