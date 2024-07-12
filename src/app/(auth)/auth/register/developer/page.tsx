@@ -1,7 +1,7 @@
 "use client"
 import { FormEvent } from "react";
 import { FormAuth } from "../../_components/FormAuth";
-import { InputForm } from "../../_components/InputForm";
+import { InputForm } from "../../../../../components/InputForm";
 import { HiEnvelope, HiKey, HiUser, HiMapPin, HiCodeBracketSquare } from 'react-icons/hi2'
 export default function Developer(){
   const handleSubmit = (e: FormEvent) => {}

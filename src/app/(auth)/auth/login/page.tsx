@@ -1,6 +1,6 @@
 "use client";
 import { HiEnvelope, HiKey } from "react-icons/hi2";
-import { InputForm } from '../_components/InputForm';
+import { InputForm } from '../../../../components/InputForm';
 import { FormAuth } from "../_components/FormAuth";
 import { FormEvent } from "react";
 
