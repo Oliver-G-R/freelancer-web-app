@@ -16,7 +16,7 @@ export default function AddJob() {
         <section className="rounded-sm p-5 shadow-lg bg-white w-[800px] mt-6">
           <form className="flex flex-col gap-4">
             <InputForm
-              labelTitle="Nombre del proyecto"
+              labelTitle="Nombre"
               type="text"
               id="nameProject"
               placeholder="Desarrollo de una pagina web"
@@ -24,7 +24,7 @@ export default function AddJob() {
               
 
             <label className="font-semibold" htmlFor="description">
-              Descripcion del proyecto
+              Descripcion
             </label>
              <div className="hover:border-purple-300 border-[1.5px]  transition border-gray-400 rounded-md overflow-hidden">
               <textarea 
@@ -35,7 +35,7 @@ export default function AddJob() {
               </textarea>
             </div>
             <InputForm
-              labelTitle="Precio del proyecto"
+              labelTitle="Precio"
               type="number"
               id="price"
               placeholder="0"
@@ -44,7 +44,7 @@ export default function AddJob() {
             </InputForm>  
             
             <button className="font-semibold text-xl text-center  border-[1.3px] border-gray-400 rounded-md w-full p-2">
-              Crear proyecto
+              Crear
             </button>
             
 

@@ -37,6 +37,11 @@ export const HeaderNav = () => {
                 Iniciar
               </Link>
             </li>
+            <li>
+              <Link className='text-white border-2 rounded-xl p-2' href="/post-project">
+                Postea un nuevo proyecto
+              </Link>
+            </li>
         </ul>
       </nav>
     </header>
