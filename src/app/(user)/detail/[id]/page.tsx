@@ -6,7 +6,6 @@ import Link from "next/link"
 export default function Detail() {
   return (
     <>
-      <HeaderNav/>
       <main className="global-container m-auto  py-10 pt-28 grid grid-cols-[69%,1fr] gap-4 max-xl:grid-cols-1">
        <article className="rounded-xl shadow-lg bg-white px-10 py-5  h-auto  max-xl:order-2">
           <header>
