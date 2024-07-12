@@ -30,6 +30,15 @@ export default function Developer(){
         <HiUser className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
+        id="fullName"
+        type="text"
+        name="fullName"
+        placeholder="Jhon Sliver"
+        labelTitle="Nombre completo"
+      >
+        <HiUser className="text-gray-400 text-2xl" />
+      </InputForm>
+      <InputForm
         id="city"
         type="text"
         name="city"

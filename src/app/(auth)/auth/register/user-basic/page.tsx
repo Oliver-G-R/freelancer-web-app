@@ -31,6 +31,15 @@ export default function UserBasic(){
       <HiUser className="text-gray-400 text-2xl" />
     </InputForm>
     <InputForm
+      id="fullName"
+      type="text"
+      name="fullName"
+      placeholder="Jhon Sliver"
+      labelTitle="Nombre completo"
+    >
+      <HiUser className="text-gray-400 text-2xl" />
+    </InputForm>
+    <InputForm
       id="password"
       type="password"
       name="password"
