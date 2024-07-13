@@ -15,7 +15,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Developer" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "city" TEXT NOT NULL,
-    "specialty" TEXT NOT NULL,
+    "speciality" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     CONSTRAINT "Developer_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -57,6 +57,3 @@ CREATE UNIQUE INDEX "Admin_userId_key" ON "Admin"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Client_userId_key" ON "Client"("userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Project_developerId_key" ON "Project"("developerId");

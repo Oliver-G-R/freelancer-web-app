@@ -32,12 +32,12 @@ model User {
 }
 
 model Developer {
-  id        String   @id @default(uuid())
-  city      String
-  specialty String
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
-  Project   Project?
+  id         String    @id @default(uuid())
+  city       String
+  speciality String
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String    @unique
+  projects   Project[] // Relación uno a muchos con proyectos
 }
 
 model Admin {
@@ -60,5 +60,5 @@ model Project {
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
   developer   Developer @relation(fields: [developerId], references: [id])
-  developerId String    @unique
+  developerId String // El ID del desarrollador que posee este proyecto
 }
