@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import db from "@/db";
+import db from "../../../../../prisma/db";
 
 export async function GET() {
   try {
@@ -33,6 +33,8 @@ export async function GET() {
         avatar: project.developer.user.avatar,
       };
     });
+
+    console.log(projects)
 
     return NextResponse.json({data: mapProjects},{ status: 200 })
   } catch (error) {

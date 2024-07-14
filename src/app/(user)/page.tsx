@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <main className="global-container m-auto p-5 pt-28">
         <Search />
-        <GridCard  title="Desarrolladores nuevos en la plataforma" loading={!projects}>
+       {projects && <GridCard  title="Desarrolladores nuevos en la plataforma" loading={!projects}>
           {
             projects?.map((project:any) => (
               <CardProfile
@@ -29,7 +29,7 @@ export default function Home() {
               />
             ))
           }
-        </GridCard>
+        </GridCard>}
       </main>
     </>
   );

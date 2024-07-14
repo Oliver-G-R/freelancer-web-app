@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import db from '@/db';
+import db from '../../../../prisma/db';
 import { CreateDeveloper } from "@/models/User";
 import { HashPassword } from "@/utils/hashPassword";
 

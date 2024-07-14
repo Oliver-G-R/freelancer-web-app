@@ -1,4 +1,4 @@
-import db from '@/db';
+import db from '../../../../prisma/db';
 import { CreateClient } from '@/models/User';
 import { HashPassword } from '@/utils/hashPassword';
 import { NextResponse } from 'next/server';
