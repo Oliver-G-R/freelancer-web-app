@@ -1,9 +1,36 @@
-import { HeaderNav } from "@/components/HeaderNav"
+"use client"
 import { HiUserCircle, HiEnvelope, HiCheckCircle, HiClock, HiMapPin   } from 'react-icons/hi2'
 
 import Link from "next/link"
+import { useEffect, useState } from 'react';
+import { GetProjectById } from "@/services/Projects";
+import { Project } from '@/models/Project';
+import { getDeveloperByProjectId } from '@/services/Developers';
+import { DeveloperResponde } from '@/models/Response';
 
-export default function Detail() {
+interface DetailProps  {
+  params: {
+    id: string
+  }
+}
+export default function Detail({params}:DetailProps) {
+  const [detailProject, setDetailProject] = useState<Project>()
+  const [developer, setDeveloper] = useState<DeveloperResponde>()
+
+
+  useEffect(() => {
+    GetProjectById(params.id)
+    .then(response => {
+      setDetailProject(response.data)
+    })
+    
+    getDeveloperByProjectId(params.id)
+    .then(response => {
+      setDeveloper(response.data)
+    })
+  }, [params.id])
+
+
   return (
     <>
       <main className="global-container m-auto  py-10 pt-28 grid grid-cols-[69%,1fr] gap-4 max-xl:grid-cols-1">
@@ -11,11 +38,11 @@ export default function Detail() {
           <header>
             <div className="flex items-center justify-between flex-wrap gap-5 max-[784px]:justify-center">
               <h1 className=" font-bold text-4xl">
-                Desarrollador web frotend
+                {detailProject?.name}
               </h1>
               <div className="flex flex-col">
                 <span className="font-bold text-3xl">
-                  $ 250 MXN
+                  $ {detailProject?.price}
                 </span>
                 <span className="ml-auto">
                   Pago al entregar
@@ -28,11 +55,17 @@ export default function Detail() {
 
           <div className="flex items-center gap-2 my-4">
               <p  className="font-semibold">Fecha de publicacion:</p>
-              <span className="bg-[--color-secondary] p-1 text-white text-sm rounded-xl w-24 text-center font-semibold">26/10/2024</span>
+              <span className="bg-[--color-secondary] p-1 text-white text-sm rounded-xl w-24 text-center font-semibold">
+                {
+                  new Date(detailProject?.created_at).toLocaleDateString()
+                }
+              </span>
           </div>
 
           <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi tempore in libero eius maxime minus sunt numquam ea nesciunt ratione odit obcaecati porro incidunt sed quas, veniam quod? Explicabo consequuntur veniam corrupti ratione quos provident adipisci quibusdam maxime totam odio, labore suscipit vitae cumque fuga iusto temporibus cum voluptatibus. A esse totam sapiente rerum
+              {
+                detailProject?.description
+              }
           </p>
 
           <div className="grid grid-cols-[50%,1fr] mt-4 gap-4 max-lg:grid-cols-1">
@@ -134,10 +167,16 @@ export default function Detail() {
 
         <aside className="rounded-xl shadow-lg bg-white p-5  h-[80vh] flex flex-col items-center max-xl:order-1 max-xl:h-auto">
 
-          <picture className="overflow-hidden rounded-full h-[150px] w-[150px] mb-4">
-            <img className="object-cover object-center h-full w-full" src="https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg" alt="Avatar" />
-          </picture>
-          <Link className="text-center font-semibold w-full rounded-md p-2 bg-[--color-secondary] text-white transition hover:opacity-95" href="/profile/oliver">
+            <picture className="overflow-hidden rounded-full h-[150px] w-[150px] mb-4">
+              <img className="object-cover object-center h-full w-full" src={
+                developer?.user.avatar
+              } alt="Avatar" />
+
+            </picture>
+            <h2 className='font-semibold text-xl my-4'>
+              {developer?.user.name}
+            </h2>
+          <Link className="text-center font-semibold w-full rounded-md p-2 bg-[--color-secondary] text-white transition hover:opacity-95" href={`/profile/${developer?.user.nameUser}`}>
             Ver perfil
           </Link>
 
@@ -149,22 +188,24 @@ export default function Detail() {
   
               <p className="flex flex-wrap items-center gap-2 text-lg ">
                 <HiMapPin className="text-2xl text-gray-400" />
-                Ciudad de México
+                Desarrollando desde: {developer?.city}
               </p>
               <p className="flex flex-wrap items-center gap-2 text-lg ">
                 <HiClock className="text-2xl text-gray-400" />
-                Miebro desde: <span className="font-semibold">26/10/2024</span>
+                Miebro desde: <span className="font-semibold">
+                  {new Date(developer?.user.created_at).toLocaleDateString()}
+                </span>
               </p>
               <p className="flex flex-wrap items-center gap-2 text-lg ">
                 <HiEnvelope className="text-2xl text-gray-400" />
-                Correo electronico: <span className="font-semibold">perfil@example.com</span>
+                Correo electronico: <span className="font-semibold">{developer?.user.email}</span>
               </p>
             </section>
-            <section>
+            {/* <section>
               <h3 className="font-bold text-xl">
                 Otros trabajos del perfil
               </h3>
-            </section>
+            </section> */}
           </article>
         </aside>
 

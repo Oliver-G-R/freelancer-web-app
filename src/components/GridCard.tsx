@@ -1,28 +1,13 @@
 "use client"
-import { Job } from "@/models/Job"
 import { CardProfile } from "./CardProfile"
-import { use, useEffect, useState } from "react"
-import { GetAllJobs } from "@/services/Jobs"
 
 interface GridCardProps {
   title: string
+  loading?: boolean
+  children? : React.ReactNode[]
 }
 
-export const GridCard = ({title}:GridCardProps) => {
-
-  const [jobs, setJobs] = useState<Job[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    GetAllJobs()
-      .then((data:any) => {
-        setJobs(data.data)
-      })
-    setLoading(false)
-  
-  }, [])
-
-
+export const GridCard = ({title,loading, children}:GridCardProps) => {
   return (
    <>
       <h1 className="text-4xl text-center mb-10 text-white font-semibold">
@@ -30,12 +15,7 @@ export const GridCard = ({title}:GridCardProps) => {
       </h1>
       <div className="grid grid-cols-auto-fill-400 gap-4">
           {
-            !loading ? jobs.map((props) => ((
-              <CardProfile
-                key={props.id}
-                {...props}
-              />
-            )))
+            !loading ? children 
 
             : (
               // skeleton 6 items
