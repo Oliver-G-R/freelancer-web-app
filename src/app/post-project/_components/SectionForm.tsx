@@ -36,7 +36,6 @@ export const SectionForm = () => {
 
     postProject(inputValues)
     .then(resp => {
-      console.log(resp)
       router.push('/')
     })
   }

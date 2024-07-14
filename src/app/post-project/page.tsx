@@ -1,10 +1,13 @@
+import { redirect } from "next/navigation";
 import { auth } from "../../auth";
-import { InputForm } from "@/components/InputForm";
-import { HiBanknotes  } from 'react-icons/hi2'
 import { SectionForm } from "./_components/SectionForm";
+import { Role } from "@/models/Role";
 export default async function  AddJob() {
 
   const session = await auth()
+
+  if(!session) redirect("/auth/login")
+  if(session && session.user.role !== Role.Developer) redirect("/")
 
   return(
     <>

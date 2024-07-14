@@ -1,12 +1,11 @@
 "use server";
+import { revalidateTag } from 'next/cache';
 import { auth, signIn, signOut } from "../auth";
 import { AuthError } from "next-auth";
 import { CreateClient, CreateDeveloper } from "@/models/User";
 import { HashPassword } from "@/utils/hashPassword";
 import db from '@/db';
 
-
-export const getSession = async () => await auth()
 
 export const loginAction = async (email:string, password:string) => {
   try {
@@ -215,3 +214,6 @@ export const registerActionClient = async ({
 export const signOutUser = async () => {
   await signOut()
 }
+
+
+export const pushRevalidatePath = (path: string) => revalidateTag(path)

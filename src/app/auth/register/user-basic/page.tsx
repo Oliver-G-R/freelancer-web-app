@@ -4,7 +4,7 @@ import { FormAuth } from "../../_components/FormAuth";
 import { InputForm } from "@/components/InputForm";
 import { HiEnvelope, HiKey, HiMapPin, HiUser } from "react-icons/hi2";
 import { CreateClient } from "@/models/User";
-import { registerActionClient } from "@/actions/auth";
+import { pushRevalidatePath, registerActionClient } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 
 export default function UserBasic(){
@@ -39,10 +39,8 @@ export default function UserBasic(){
         if(resp?.error){
           setError(resp.error)
         }else{
-          console.log(resp)
-
+          pushRevalidatePath('/')
           route.push('/')
-
         }
       })
 
