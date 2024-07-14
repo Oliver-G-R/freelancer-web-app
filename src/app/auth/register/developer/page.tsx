@@ -1,10 +1,45 @@
 "use client"
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { FormAuth } from "../../_components/FormAuth";
-import { InputForm } from "../../../../../components/InputForm";
+import { InputForm } from "@/components/InputForm";
 import { HiEnvelope, HiKey, HiUser, HiMapPin, HiCodeBracketSquare } from 'react-icons/hi2'
+import { CreateDeveloper } from "@/models/User";
+import { registerActionDeveloper } from "@/actions/auth";
+import { useRouter } from "next/navigation";
 export default function Developer(){
-  const handleSubmit = (e: FormEvent) => {}
+
+  const route = useRouter()
+
+  const [inputValues, setInputValues] = useState<CreateDeveloper>({
+    email: '',
+    name: '',
+    nameUser: '',
+    city: '',
+    speciality: '',
+    password: '',
+  })
+
+  const [error, setError] = useState<string | null>(null)
+
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    const resp = await registerActionDeveloper(inputValues)
+    
+    if(resp?.error){
+      setError(resp.error)
+    }else{
+      route.push('/post-project')
+    }
+    
+  }
+  
+  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+    setInputValues({
+      ...inputValues,
+      [e.target.name]: e.target.value
+    })
+  }
   return (
     <FormAuth
       legendTitle="Crea una cuenta como desarrollador"
@@ -12,6 +47,7 @@ export default function Developer(){
       btnTitle="Crear cuenta"
     >
       <InputForm
+        onChange={handleChange}
         id="email"
         type="email"
         name="email"
@@ -21,6 +57,7 @@ export default function Developer(){
         <HiEnvelope className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
+        onChange={handleChange}
         id="nameUser"
         type="text"
         name="nameUser"
@@ -30,15 +67,17 @@ export default function Developer(){
         <HiUser className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
-        id="fullName"
+        onChange={handleChange}
+        id="name"
         type="text"
-        name="fullName"
+        name="name"
         placeholder="Jhon Sliver"
         labelTitle="Nombre completo"
       >
         <HiUser className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
+        onChange={handleChange}
         id="city"
         type="text"
         name="city"
@@ -48,15 +87,17 @@ export default function Developer(){
         <HiMapPin className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
-        id="specialty"
+        onChange={handleChange}
+        id="speciality"
         type="text"
-        name="specialty"
+        name="speciality"
         placeholder="Desarrolo web.."
         labelTitle="Especialidad"
       >
         <HiCodeBracketSquare className="text-gray-400 text-2xl" />
       </InputForm>
       <InputForm
+        onChange={handleChange}
         id="password"
         type="password"
         name="password"
@@ -65,6 +106,8 @@ export default function Developer(){
       >
         <HiKey className="text-gray-400 text-2xl" />
       </InputForm>
+
+      {error && <p className="text-red-500 text-sm">{error}</p>}
     </FormAuth>
   )
 }

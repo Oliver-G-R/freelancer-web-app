@@ -4,16 +4,16 @@ import { GridCard } from "@/components/GridCard";
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
 
-export default function Profile(){
+export default function Profile() {
   const params = useParams<{userName: string}>()
   const [profile, setProfile] = useState<any>()
+
 
   useEffect(() => {
 
     fetch(`/api/search?nameUser=${params.userName}`)
           .then(response => response.json())
           .then(({data}) => {
-            console.log(data)
             setProfile(data)
           })
 
@@ -21,6 +21,7 @@ export default function Profile(){
   return (
     <>
       <main className="global-container pt-28 ">
+
         {
           profile ? (
             <>
@@ -30,7 +31,7 @@ export default function Profile(){
                     <img className="object-cover object-center h-full w-full" src={profile.user.avatar} alt="Avatar" />
                   </picture>
 
-                  <div className="pb-4">
+                  <div className="p-4">
                     <h2 className="font-bold text-3xl">
                       {profile?.user.name}
                     </h2>

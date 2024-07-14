@@ -10,7 +10,6 @@ export default function Home() {
   useEffect(() => {
     GetAllProjects()
     .then(response => {
-      console.log(response)
       setProjects(response.data)
     })
   }, [])

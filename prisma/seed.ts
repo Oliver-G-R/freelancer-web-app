@@ -1,5 +1,5 @@
 import { HashPassword } from '../src/utils/hashPassword'
-import db from './db'
+import db from '../src/db'
 
 (async () => {
     try {
@@ -43,7 +43,6 @@ import db from './db'
             })
         })
 
-        console.log("Registro creado")
     } catch (error) {
         console.error(error)
     }finally{

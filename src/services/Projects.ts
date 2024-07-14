@@ -18,7 +18,6 @@ export const GetProjectById = async (id:string) => {
     const req = await fetch(`/api/developer/projects/${id}`)
     const res = await req.json()
 
-    console.log(res)
 
     return {
       data: res.data

@@ -1,4 +1,4 @@
-import db from '../../../../../../prisma/db';
+import db from '../../../../../db';
 import { NextResponse } from 'next/server';
 interface Params {
   params: { id: string };

@@ -8,6 +8,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const InputForm = (props:InputProps) => {
   const { children, id, labelTitle, className, errorMessage, ...restProps } = props
+
+
   return (
     <div className="flex flex-col gap-2">
       <label className="font-semibold" htmlFor={id}>
@@ -24,6 +26,7 @@ export const InputForm = (props:InputProps) => {
         {children}
         <input 
           className={`w-full outline-0 px-4 py-2 ${className}`}
+          id={id}
           {...restProps}
         />
       </div>

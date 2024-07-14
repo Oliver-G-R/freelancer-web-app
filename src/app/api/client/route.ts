@@ -1,4 +1,4 @@
-import db from '../../../../prisma/db';
+import db from '../../../db';
 import { CreateClient } from '@/models/User';
 import { HashPassword } from '@/utils/hashPassword';
 import { NextResponse } from 'next/server';
@@ -10,8 +10,16 @@ export async function POST(req:Request){
     const avatar = 'https://i.pravatar.cc/500'
     const {name, nameUser, email, password, } = data as CreateClient
     const hashPassword = HashPassword.hash(password)
+
+    const userExist = await db.user.findUnique({
+      where:{
+        email
+      }
+    })
+
+    if(userExist) return NextResponse.json({message: 'Usuario ya existe'}, {status: 400})
     
-    await db.$transaction(async (db) => {
+    const client = await db.$transaction(async (db) => {
       const user = await db.user.create({
         data:{
           name,
@@ -32,9 +40,11 @@ export async function POST(req:Request){
           }
         }
       })
+
+      return user
     })
 
-    return NextResponse.json({message: 'Cliente creado correctamente'}, {status: 200})
+    return NextResponse.json({message: 'Cliente creado correctamente', data: client}, {status: 200})
   } catch (error) {
     return NextResponse.json({message: 'Error al crear el cliente'}, {status: 500})
   }

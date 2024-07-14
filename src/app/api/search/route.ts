@@ -1,4 +1,4 @@
-import db from '../../../../prisma/db';
+import db from '../../../db';
 import { NextRequest, NextResponse } from 'next/server';
 
 
@@ -31,7 +31,6 @@ export async function GET(req: NextRequest){
     return NextResponse.json({data: user}, {status: 200})
     
   } catch (error) {
-    console.log(error)
     return NextResponse.json({message: "Error en el servidor"}, {status: 500})
   }
 }

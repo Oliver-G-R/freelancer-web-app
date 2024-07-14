@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import db from '../../../../prisma/db';
+import db from '../../../db';
 import { CreateDeveloper } from "@/models/User";
 import { HashPassword } from "@/utils/hashPassword";
 
@@ -46,7 +46,16 @@ export async function POST(req:Request){
     const {name, nameUser, email, password, city, speciality } = data as CreateDeveloper
     const hashPassword = HashPassword.hash(password)
     const avatar = 'https://i.pravatar.cc/500'
-    await db.$transaction(async (db) => {
+
+    const userExist = await db.user.findUnique({
+      where:{
+        email
+      }
+    })
+
+    if(userExist) return NextResponse.json({message: 'Usuario ya existe'}, {status: 400})
+
+    const developer = await db.$transaction(async (db) => {
       const user = await db.user.create({
         data:{
           name,
@@ -69,9 +78,12 @@ export async function POST(req:Request){
           }
         }
       })
+
+      return user
     })
 
-    return NextResponse.json({message: 'Desarrollador creado'}, {status: 200})
+    return NextResponse.json({data: developer}, {status: 201})
+
   } catch (error) {
     NextResponse.json({message: 'Error al crear el proyecto'}, {status: 500})
   }
