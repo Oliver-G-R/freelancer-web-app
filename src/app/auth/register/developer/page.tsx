@@ -4,11 +4,9 @@ import { FormAuth } from "../../_components/FormAuth";
 import { InputForm } from "@/components/InputForm";
 import { HiEnvelope, HiKey, HiUser, HiMapPin, HiCodeBracketSquare } from 'react-icons/hi2'
 import { CreateDeveloper } from "@/models/User";
-import { registerActionDeveloper } from "@/actions/auth";
+import { pushRevalidatePath, registerActionDeveloper } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 export default function Developer(){
-
-  const route = useRouter()
 
   const [inputValues, setInputValues] = useState<CreateDeveloper>({
     email: '',
@@ -20,7 +18,7 @@ export default function Developer(){
   })
 
   const [error, setError] = useState<string | null>(null)
-
+  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -29,7 +27,8 @@ export default function Developer(){
     if(resp?.error){
       setError(resp.error)
     }else{
-      route.push('/post-project')
+      pushRevalidatePath('/post-project')
+      router.push('/post-project')
     }
     
   }

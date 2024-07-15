@@ -3,7 +3,7 @@ import { HiEnvelope, HiKey } from "react-icons/hi2";
 import { InputForm } from '@/components/InputForm';
 import { FormAuth } from "../_components/FormAuth";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { loginAction } from "@/actions/auth";
+import { loginAction, pushRevalidatePath } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -26,7 +26,7 @@ export default function Login() {
     if(resp?.error) {
       setError(resp.error)
     }else{
-      router.push('/')
+      pushRevalidatePath("/")
     }
   }
 

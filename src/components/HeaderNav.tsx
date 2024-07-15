@@ -1,6 +1,5 @@
 "use client";
 import { signOutUser } from '@/actions/auth';
-import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
@@ -23,6 +22,7 @@ export const HeaderNav = (props:any) => {
       window.removeEventListener('scroll', () => handleScroll())
     }
   }, [props])
+  
   return (
     <header ref={header} className='transition fixed w-full z-[5]'>
       <nav className='global-container m-auto py-5 flex items-center justify-between'>
