@@ -28,3 +28,24 @@ export const GetProjectById = async (id:string) => {
     } 
   }
 }
+
+export const getProjectByQuery = async (query:string) => {
+  try {
+    const req = await fetch(`/api/developer/projects/search?q=${query}`)
+    const res = await req.json()
+
+    if(req.status === 404) {
+      return {
+        error: res.message
+      }
+    }
+    
+    return {
+      data: res.data
+    }
+  } catch (error:any) {
+    return {
+      error: error.error
+    } 
+  }
+}
