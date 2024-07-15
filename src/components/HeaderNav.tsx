@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 export const HeaderNav = (props:any) => {
   const header = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    console.log(props.session)
     const handleScroll = () => {
        if (window.scrollY > 0) {
         header.current?.classList.add('global-gradient')

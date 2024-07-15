@@ -9,9 +9,6 @@ const developerRoutes = ['/post-project']
 export default auth((req) => {
   const {nextUrl, auth}  = req
   const isLogged = !!req.auth
-
-  console.log(auth?.user)
-
   if (!isLogged && developerRoutes.includes(nextUrl.pathname) && auth?.user.role !== 'DEVELOPER') {
     return NextResponse.redirect(new URL("/auth/login", nextUrl))
   }

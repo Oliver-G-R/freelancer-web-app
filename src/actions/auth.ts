@@ -22,8 +22,6 @@ export const loginAction = async (email:string, password:string) => {
       }
     }
 
-    console.log(error)
-
     return{
       error: 'An error occurred'
     }
@@ -46,8 +44,6 @@ export const postProject = async ( data: any) => {
         userId: id
       }
     })
-
-    console.log("developerid: ", developer?.id)
 
     if(!developer) return {
       error: 'Desarrollador no encontrado'
@@ -159,7 +155,6 @@ export const registerActionClient = async ({
 }: CreateClient) => {
   try {
 
-    console.log(name, nameUser, email, password)
     const hashPassword = HashPassword.hash(password)
     const avatar = 'https://i.pravatar.cc/500'
 
