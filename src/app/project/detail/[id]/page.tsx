@@ -16,7 +16,15 @@ interface DetailProps  {
 export default function Detail({params}:DetailProps) {
   const [detailProject, setDetailProject] = useState<Project>()
   const [developer, setDeveloper] = useState<DeveloperResponde>()
-
+  const [input, setInput] = useState<{
+    name: string,
+    email: string,
+    description: string
+  }>({
+    name: '',
+    email: '',
+    description: ''
+  })
 
   useEffect(() => {
     GetProjectById(params.id)
@@ -29,6 +37,13 @@ export default function Detail({params}:DetailProps) {
       setDeveloper(response.data)
     })
   }, [params.id])
+
+
+  const handleSendProposal = () => {
+    // Send
+    window.open(`mailto:${developer?.user.email}?subject=Propuesta de trabajo - ${input.name}&body=${input.description}`)
+
+  }
 
 
   return (
@@ -86,6 +101,8 @@ export default function Detail({params}:DetailProps) {
                         <input 
                           className="w-full outline-0 px-4 py-2"
                           type="text" 
+                          name='name'
+                          onChange={(e) => setInput({...input, name: e.target.value})}
                           id="nameClient" 
                           placeholder="Jhon" 
                         />
@@ -98,8 +115,10 @@ export default function Detail({params}:DetailProps) {
                       <div className="hover:border-purple-300 border-[1.5px]  transition border-gray-400 rounded-md overflow-hidden flex items-center px-3">
                         <HiEnvelope className="text-gray-400 text-2xl" />
                         <input 
+                          onChange={(e) => setInput({...input, email: e.target.value})}
                           className="w-full outline-0 px-4 py-2 "
                           type="email" 
+                          name='email'
                           id="email" 
                           placeholder="jhon@codecrafters.com" 
                         />
@@ -111,6 +130,8 @@ export default function Detail({params}:DetailProps) {
                       </label>
                       <div className="hover:border-purple-300 border-[1.5px]  transition border-gray-400 rounded-md overflow-hidden">
                         <textarea 
+                          name='description'
+                          onChange={(e) => setInput({...input, description: e.target.value})}
                           placeholder="Hola, me gustaria saber mas sobre tu propuesta de trabajo..."
                           className="w-full outline-0 px-4 py-2 resize-none h-32"
                           id="description">
@@ -121,7 +142,7 @@ export default function Detail({params}:DetailProps) {
                   </div>
                 </fieldset>
   
-                <button className="font-semibold text-xl text-center  border-[1.3px] border-gray-400 rounded-md w-full p-2">
+                <button onClick={handleSendProposal} className="font-semibold text-xl text-center  border-[1.3px] border-gray-400 rounded-md w-full p-2">
                   Enviar propuesta
                 </button>
               </form>
