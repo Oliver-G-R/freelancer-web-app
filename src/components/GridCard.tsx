@@ -20,7 +20,7 @@ export const GridCard = ({title,loading, children}:GridCardProps) => {
             : (
               // skeleton 6 items
 
-              [...Array(6)].map((_, index) => (
+              [...Array(3)].map((_, index) => (
                 <div key={index} className="flex flex-col p-6 rounded-xl shadow-lg bg-white animate-pulse">
                   <div className="flex items-center">
                     <div className="w-16 h-16 rounded-2xl bg-gray-300"></div>

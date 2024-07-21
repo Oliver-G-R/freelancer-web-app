@@ -1,9 +1,11 @@
 "use client";
-import { signOutUser } from '@/actions/auth';
+import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 export const HeaderNav = (props:any) => {
+  const session = useSession()
+
   const header = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +32,7 @@ export const HeaderNav = (props:any) => {
         </Link>
 
         <ul className='flex items-center gap-4'>
-              {!props.session ? <>
+              {session.status === 'loading'  || session.status === 'unauthenticated' && <>
                 <li>
                   <Link className='text-white border-2 rounded-xl p-2' href="/auth/register/type-account">
                     Registrarase
@@ -42,11 +44,12 @@ export const HeaderNav = (props:any) => {
                   </Link>
                 </li>
              </>
-              : <button onClick={() => signOutUser()} className='text-white border-2 rounded-xl p-2'>
-                Cerrar sesion
-              </button> 
             }
-            {props.session?.user?.role === 'DEVELOPER' &&<li>
+
+            {session.status === 'authenticated' && <button onClick={() => signOut()} className='text-white border-2 rounded-xl p-2'>
+                Cerrar sesion
+              </button> }
+            {session.data?.user?.role === 'DEVELOPER' &&<li>
               <Link className='text-white border-2 rounded-xl p-2' href="/post-project">
                 Postea un nuevo proyecto
               </Link>

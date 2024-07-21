@@ -1,5 +1,5 @@
 "use server";
-import { revalidateTag } from 'next/cache';
+
 import { auth, signIn, signOut } from "../auth";
 import { AuthError } from "next-auth";
 import { CreateClient, CreateDeveloper } from "@/models/User";
@@ -13,8 +13,9 @@ export const loginAction = async (email:string, password:string) => {
       email,
       password,
       redirect: false,
-    
     })
+
+
   } catch (error) {
     if(error instanceof AuthError) {
       return {
@@ -205,10 +206,3 @@ export const registerActionClient = async ({
     }
   }
 }
-
-export const signOutUser = async () => {
-  await signOut()
-}
-
-
-export const pushRevalidatePath = (path: string) => revalidateTag(path)

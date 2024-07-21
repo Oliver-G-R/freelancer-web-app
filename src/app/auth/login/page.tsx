@@ -3,8 +3,8 @@ import { HiEnvelope, HiKey } from "react-icons/hi2";
 import { InputForm } from '@/components/InputForm';
 import { FormAuth } from "../_components/FormAuth";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { loginAction, pushRevalidatePath } from "@/actions/auth";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function Login() {
   const [inputValues, setInputValues] = useState<{
@@ -16,17 +16,24 @@ export default function Login() {
   })
 
   const [error, setError] = useState<string | null>(null)
+
   const router = useRouter()
   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if(!inputValues.email || !inputValues.password) return
 
-    const resp = await loginAction(inputValues.email, inputValues.password)
+    const resp = await signIn('credentials', {
+      email: inputValues.email,
+      password: inputValues.password,
+      redirect: false
+    })
+
+
     if(resp?.error) {
-      setError(resp.error)
+      setError("Credenciales no validas")
     }else{
-      pushRevalidatePath("/")
+      router.push('/')
     }
   }
 
