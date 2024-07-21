@@ -4,14 +4,12 @@ import { FormAuth } from "../../_components/FormAuth";
 import { InputForm } from "@/components/InputForm";
 import { HiEnvelope, HiKey, HiMapPin, HiUser } from "react-icons/hi2";
 import { CreateClient } from "@/models/User";
-import { pushRevalidatePath, registerActionClient } from "@/actions/auth";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/services/Client";
+import { signIn } from "next-auth/react";
 
 export default function UserBasic(){
-
-
   const route = useRouter()
-
 
   const [inputValues, setInputValues] = useState<CreateClient>({
     email: '',
@@ -33,19 +31,24 @@ export default function UserBasic(){
     e.preventDefault()
     if(!inputValues.email || !inputValues.password || !inputValues.name || !inputValues.nameUser) return
 
+    const resp = await createClient(inputValues)
 
-    await registerActionClient(inputValues)
-      .then(resp => {
-        if(resp?.error){
-          setError(resp.error)
-        }else{
-          pushRevalidatePath('/')
-          route.push('/')
-        }
-      })
+    if(resp?.error){
+      return setError(resp.error)
+    }
 
-    
-  
+    const signInResp = await signIn('credentials', {
+      email: inputValues.email,
+      password: inputValues.password,
+      redirect: false
+    })
+
+    if(signInResp?.error){
+      setError(signInResp.error)
+    }else{
+      route.push('/')
+    }
+
   }
   return (
     <FormAuth
