@@ -13,7 +13,8 @@ export default auth((req) => {
     return NextResponse.redirect(new URL("/auth/login", nextUrl))
   }
 
-  if(isLogged && nextUrl.pathname === '/auth/login') {
+  //  si esta logeado y el pathname coincide con algo que empiece con /auth/*, redirigir a la raiz
+  if(isLogged && nextUrl.pathname.startsWith('/auth/')) {
     return NextResponse.redirect(new URL("/", nextUrl))
   }
 
